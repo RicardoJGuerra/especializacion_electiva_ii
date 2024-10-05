@@ -3,4 +3,5 @@ practica_1/*
 
 # No ignorar los archivos con extensión .tf
 !practica_1/*.tf
+!practica_1/*.sh
 terraform.tfstate

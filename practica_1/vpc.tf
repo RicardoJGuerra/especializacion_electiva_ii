@@ -157,14 +157,15 @@ resource "aws_security_group" "instance_sg" {
   }
 }
 
-
 resource "aws_instance" "ec2_public_1" {
-  ami                     = "ami-0fff1b9a61dec8a5f"
-  instance_type           = "t2.micro"
-  subnet_id               = aws_subnet.public_subnet_1.id
-  key_name                = data.aws_key_pair.key.key_name
-  vpc_security_group_ids  = [aws_security_group.instance_sg.id]
+  ami                         = "ami-0fff1b9a61dec8a5f"
+  instance_type               = "t2.micro"
+  subnet_id                   = aws_subnet.public_subnet_1.id
+  key_name                    = data.aws_key_pair.key.key_name
+  vpc_security_group_ids      = [aws_security_group.instance_sg.id]
+  user_data                   = file("comands.sh")
 
+  associate_public_ip_address = true
     tags = {
       Name = "EC2_Public_1"
     }
@@ -176,6 +177,7 @@ resource "aws_instance" "ec2_public_2" {
   subnet_id               = aws_subnet.public_subnet_2.id
   key_name                = data.aws_key_pair.key.key_name
   vpc_security_group_ids  = [aws_security_group.instance_sg.id]
+  user_data                   = file("comands.sh")
 
     tags = {
       Name = "EC2_Public_2"
