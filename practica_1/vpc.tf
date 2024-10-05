@@ -163,7 +163,7 @@ resource "aws_instance" "ec2_public_1" {
   subnet_id                   = aws_subnet.public_subnet_1.id
   key_name                    = data.aws_key_pair.key.key_name
   vpc_security_group_ids      = [aws_security_group.instance_sg.id]
-  user_data                   = file("comands.sh")
+  user_data                   = file("comandsEC1.sh")
 
   associate_public_ip_address = true
     tags = {
@@ -177,7 +177,7 @@ resource "aws_instance" "ec2_public_2" {
   subnet_id               = aws_subnet.public_subnet_2.id
   key_name                = data.aws_key_pair.key.key_name
   vpc_security_group_ids  = [aws_security_group.instance_sg.id]
-  user_data                   = file("comands.sh")
+  user_data                   = file("comandsEC2.sh")
 
     tags = {
       Name = "EC2_Public_2"

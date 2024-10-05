@@ -16,3 +16,9 @@ sudo systemctl enable docker
 
 # Descargamos e iniciamos el contenedor de Nginx
 sudo docker run -d -p 80:80 --name nginx-container nginx
+
+# Esperar unos segundos para asegurarse de que Nginx se esté ejecutando
+sleep 5
+
+# Cambiar el contenido de la página de bienvenida de Nginx usando sed
+sudo docker exec $(sudo docker ps -q --filter ancestor=nginx) bash -c "sed -i 's/Welcome/Welcome EC2_#2/' /usr/share/nginx/html/index.html"
