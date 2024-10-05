@@ -1,0 +1,6 @@
+# Ignorar todos los archivos en la carpeta
+practica_1/*
+
+# No ignorar los archivos con extensión .tf
+!practica_1/*.tf
+terraform.tfstate
